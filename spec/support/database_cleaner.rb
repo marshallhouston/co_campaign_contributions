@@ -5,6 +5,10 @@ RSpec.configure do |config|
   end
 
   config.before(:each) do
+    DatabaseCleaner.strategy = :transaction
+  end
+
+  config.before(:each, :js => true) do
     DatabaseCleaner.strategy = :truncation
   end
 
@@ -18,5 +22,5 @@ RSpec.configure do |config|
 
   # Optional for formatting output of test suite runs (see comments)
   # config.formatter = :documentation
-
+  
 end
